@@ -1,0 +1,47 @@
+name: Train and Evaluate Model
+
+on: [push]
+
+jobs:
+  train_model:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11.5'
+
+    - name: Install dependencies
+      run: |
+        python -m venv env
+        source env/bin/activate
+        pip install -r requirements.txt
+
+    - name: Download dataset
+      run: |
+        source env/bin/activate
+        python scripts/download_dataset.py
+
+    - name: Preprocess data
+      run: |
+        source env/bin/activate
+        python scripts/preprocess_data.py
+
+    - name: Train model
+      run: |
+        source env/bin/activate
+        python scripts/train_model.py
+
+    - name: Evaluate model
+      run: |
+        source env/bin/activate
+        python scripts/evaluate_model.py
+
+    - name: Upload model to Hugging Face
+      run: |
+        source env/bin/activate
+        python scripts/upload_model_to_hf.py
