@@ -1,0 +1,29 @@
+# Ignore dataset images
+dataset-original/cardboard/*
+dataset-original/glass/*
+dataset-original/plastic/*
+dataset-original/paper/*
+dataset-original/metal/*
+dataset-original/trash/*
+
+# Ignore trained model file
+notebooks/models/trashnet_model.h5
+
+# Ignore Python virtual environment
+env/
+
+# Ignore WandB directory (if applicable)
+notebooks/wandb/
+
+# Ignore generated files or directories
+__pycache__/
+*.pyc
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore any logs or temporary files
+*.log
+*.tmp
+*.temp
+*.swp

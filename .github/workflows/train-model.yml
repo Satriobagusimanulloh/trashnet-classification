@@ -1,6 +1,12 @@
 name: Train and Evaluate Model
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   train_model:
@@ -20,11 +26,6 @@ jobs:
         python -m venv env
         source env/bin/activate
         pip install -r requirements.txt
-
-    - name: Download dataset
-      run: |
-        source env/bin/activate
-        python scripts/download_dataset.py
 
     - name: Preprocess data
       run: |
